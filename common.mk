@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-COMMON_PATH := device/samsung/sm7325-common
+COMMON_PATH := device/samsung/sm8350-common
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
@@ -25,7 +25,7 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_ENFORCE_RRO_TARGETS := *
 
 # VNDK
-PRODUCT_TARGET_VNDK_VERSION := 30
+PRODUCT_TARGET_VNDK_VERSION := 31
 
 # No A/B
 AB_OTA_UPDATER := false
@@ -48,10 +48,7 @@ PRODUCT_PACKAGES += \
     init.vendor.rilchip.rc \
     init.vendor.rilcommon.rc \
     init.vendor.sensors.rc \
-    wifi_firmware.rc \
-    ueventd.qcom.rc \
-    wifi_qcom_wcn6750.rc \
-    wifi_sec.rc
+    ueventd.qcom.rc 
 
 # Vendor scripts
 PRODUCT_PACKAGES += \
@@ -391,7 +388,7 @@ PRODUCT_PACKAGES += \
 
 # Touch features
 PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.samsung_sm7325
+    vendor.lineage.touch@1.0-service.samsung_sm8350
 
 # Trust HAL
 PRODUCT_PACKAGES += \
@@ -423,27 +420,18 @@ PRODUCT_PACKAGES += \
 
 # VNDK
 PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v30/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v30.so
+    prebuilts/vndk/v31/arm64/arch-arm64-armv8-a/shared/vndk-sp/libutils.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libutils-v31.so
 
 # WiFi
 PRODUCT_PACKAGES += \
+    WifiOverlay \
     android.hardware.wifi@1.0-service \
     hostapd \
-    libwifi-hal \
-    libwifi-hal-qcom \
-    libwpa_client \
-    wpa_cli \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    WifiOverlay \
-    TetheringConfigOverlay
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
-    $(COMMON_PATH)/configs/wifi/icm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/icm.conf \
-    $(COMMON_PATH)/configs/wifi/indoorchannel.info:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/indoorchannel.info \
-    $(COMMON_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
-    $(COMMON_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/WCNSS_qcom_cfg.ini
+    $(COMMON_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 # WiFi Display
 PRODUCT_PACKAGES += \

@@ -111,7 +111,7 @@ ro.camera.notify_nfc=1
 
 # Chipset
 ro.soc.manufacturer=QTI
-ro.soc.model=SM7325
+ro.soc.model=SM8350
 
 # Crypto
 ro.crypto.metadata_init_delete_all_keys.enabled=false
@@ -178,7 +178,7 @@ ro.hardware.gatekeeper=mdfpp
 
 # Keystore
 ro.hardware.keystore=mdfpp
-ro.security.keystore.keytype=sakv2,gak
+ro.security.keystore.keytype=sakv2,gak,sgaak
 
 # Media
 debug.stagefright.omx_default_rank=0
